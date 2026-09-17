@@ -66,5 +66,3 @@ SustainableMaterialManagement/
 * `sql/schema.sql` — Database structure, including tables, primary keys, and foreign keys.
 * `sql/sample_data.sql` — Example data for the database.
 * `sql/queries.sql` — Example queries for analysing the database.
-
-This is ready to paste directly into your `README.md`.
