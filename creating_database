@@ -1,0 +1,119 @@
+CREATE TABLE `factory` (
+  `factory_id` int,
+  `factory_name` string,
+  `country_id` int,
+  PRIMARY KEY (`factory_id`)
+);
+
+CREATE TABLE `supplier` (
+  `supplier_id` int,
+  `country_id` int,
+  `name` string,
+  PRIMARY KEY (`supplier_id`)
+);
+
+CREATE TABLE `material` (
+  `material_id` int,
+  `name` string,
+  `type` string,
+  PRIMARY KEY (`material_id`)
+);
+
+CREATE TABLE `recycling_company` (
+  `recycling_company_id` int,
+  `country_id` int,
+  `name` string,
+  `recycling_efficiency_rate` float,
+  PRIMARY KEY (`recycling_company_id`)
+);
+
+CREATE TABLE `waste_record` (
+  `waste_record_id` int,
+  `product_id` int,
+  `country_id` int,
+  `fate_id` int,
+  `percent_collected` int,
+  `percent_illegal` int,
+  `quantity_collected` int,
+  PRIMARY KEY (`waste_record_id`),
+  FOREIGN KEY (`fate_id`)
+      REFERENCES `recycling_company`(`recycling_efficiency_rate`)
+);
+
+CREATE TABLE `recovery` (
+  `recovery_id` int,
+  `waste_record_id` int,
+  `recycling_company_id` int,
+  `quantity_recovered` int,
+  `recover_rate_percent` int,
+  PRIMARY KEY (`recovery_id`)
+);
+
+CREATE TABLE `product_type` (
+  `product_type_id` int,
+  `name` string,
+  `avg_lifespan_years` int,
+  PRIMARY KEY (`product_type_id`)
+);
+
+CREATE TABLE `factory_product` (
+  `factory_product_id` int,
+  `factory_id` int,
+  `product_type_id` int,
+  PRIMARY KEY (`factory_product_id`),
+  FOREIGN KEY (`factory_product_id`)
+      REFERENCES `factory`(`factory_name`)
+);
+
+CREATE TABLE `extraction_method` (
+  `extraction_method_id` int,
+  `method_name` string,
+  `enviromental_risk_rating` int,
+  PRIMARY KEY (`extraction_method_id`)
+);
+
+CREATE TABLE `extraction` (
+  `extraction_id` int,
+  `supplier_id` int,
+  `material_id` int,
+  `extraction_method_id` int,
+  `extraction_quantity` int,
+  PRIMARY KEY (`extraction_id`),
+  FOREIGN KEY (`extraction_method_id`)
+      REFERENCES `extraction_method`(`extraction_method_id`)
+);
+
+CREATE TABLE `product_material` (
+  `product_type_id` int,
+  `material_id` int,
+  `quantity_per_unit` int
+);
+
+CREATE TABLE `waste_collection_rule` (
+  `rule_id` int,
+  `country_id` int,
+  `rule_description` string,
+  PRIMARY KEY (`rule_id`)
+);
+
+CREATE TABLE `country` (
+  `country_id` int,
+  `name` string,
+  PRIMARY KEY (`country_id`)
+);
+
+CREATE TABLE `product_fate` (
+  `fate_id` int,
+  `fate_type` string,
+  `rule_id` int,
+  PRIMARY KEY (`fate_id`)
+);
+
+CREATE TABLE `waste_collection_company` (
+  `company_id` int,
+  `country_id` int,
+  `name` string,
+  `collection_fee` int,
+  PRIMARY KEY (`company_id`)
+);
+
