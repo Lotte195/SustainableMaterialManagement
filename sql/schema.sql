@@ -1,3 +1,4 @@
+-- DROP DATABASE IF EXISTS SustainableMaterialManagement;
 CREATE DATABASE IF NOT EXISTS SustainableMaterialManagement;
 USE SustainableMaterialManagement;
 
