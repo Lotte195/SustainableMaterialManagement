@@ -1,51 +1,72 @@
+Absolutely — here's a cleaner, properly structured `README.md` version. I also made the setup instructions and table descriptions easier to scan.
+
 # SustainableMaterialManagement
-SQL code for a database keeping track of materials used in tech products, and their recycling.
 
-For an overview of the ERD of this database, follow this link: https://lucid.app/lucidchart/7d0e5de8-1718-480a-b3a6-82ad701c2c3a/edit?viewport_loc=-2409%2C-3470%2C4249%2C1937%2C0_0&invitationId=inv_c4767de5-4d50-4759-bf8f-d591fd471b6a 
+SQL code for a database that keeps track of materials used in technology products and their recycling.
 
-Material scarcity in tech production is an economic and environmental problem. High product costs, resource mining that damages the environment, and waste accumulation are examples of the negative effect that the high production level has. This database attempts to keep track of factories, production, mining, recycling, and more. 
+## ERD
 
-country
-Stores countries
+For an overview of the Entity-Relationship Diagram (ERD) of this database, see the [Lucidchart ERD](https://lucid.app/lucidchart/7d0e5de8-1718-480a-b3a6-82ad701c2c3a/edit?viewport_loc=-2409%2C-3470%2C4249%2C1937%2C0_0&invitationId=inv_c4767de5-4d50-4759-bf8f-d591fd471b6a).
 
-factory
-Stores factories and their countries
+## About the Project
 
-supplier
-Stores suppliers and their countries
+Material scarcity in technology production is an economic and environmental problem. High product costs, resource extraction that damages the environment, and waste accumulation are examples of the negative effects associated with high levels of production.
 
-material
-Stores materials
+This database attempts to keep track of factories, production, material extraction, recycling, waste collection, and related information.
 
-recycling_company
-Stores recycling companies and their countries
+## Database Tables
 
-product_type
-Stores product categories/types
+| Table                      | Description                                                |
+| -------------------------- | ---------------------------------------------------------- |
+| `country`                  | Stores countries                                           |
+| `factory`                  | Stores factories and their countries                       |
+| `supplier`                 | Stores suppliers and their countries                       |
+| `material`                 | Stores materials                                           |
+| `recycling_company`        | Stores recycling companies and their countries             |
+| `product_type`             | Stores product categories/types                            |
+| `product_fate`             | Stores possible waste destinations                         |
+| `waste_collection_rule`    | Stores country-specific waste collection rules             |
+| `waste_record`             | Connects waste data to product types, countries, and fates |
+| `recovery`                 | Connects waste records to recycling companies              |
+| `factory_product`          | Junction table between factories and product types         |
+| `extraction_method`        | Stores extraction methods                                  |
+| `extraction`               | Connects suppliers, materials, and extraction methods      |
+| `product_material`         | Junction table between product types and materials         |
+| `waste_collection_company` | Stores waste collection companies and their countries      |
 
-product_fate
-Stores possible waste destinations
+## Getting Started
 
-waste_collection_rule
-Stores country-specific collection rules
+### Requirements
 
-waste_record
-Connects waste data to product types, countries, and fates
+* MySQL Server
+* MySQL Workbench (or another MySQL client)
+* Git
 
-recovery
-Connects waste records to recycling companies
+### Installation
 
-factory_product
-Junction table between factories and product types
+1. Clone this repository.
+2. Open MySQL Workbench and connect to your MySQL server.
+3. Open `sql/schema.sql` and execute it to create the database structure.
+4. Open `sql/sample_data.sql` and execute it to insert the example data.
+5. Select the `SustainableMaterialManagement` database and start querying.
 
-extraction_method
-Stores extraction methods
+## Project Structure
 
-extraction
-Connects suppliers, materials, and extraction methods
-	
-product_material
-Junction table between product types and materials
+```text
+SustainableMaterialManagement/
+│
+├── README.md
+│
+└── sql/
+    ├── schema.sql
+    ├── sample_data.sql
+    └── queries.sql
+```
 
-waste_collection_company
-Stores collection companies and their countries
+### SQL Files
+
+* `sql/schema.sql` — Database structure, including tables, primary keys, and foreign keys.
+* `sql/sample_data.sql` — Example data for the database.
+* `sql/queries.sql` — Example queries for analysing the database.
+
+This is ready to paste directly into your `README.md`.
