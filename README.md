@@ -1,5 +1,3 @@
-Absolutely — here's a cleaner, properly structured `README.md` version. I also made the setup instructions and table descriptions easier to scan.
-
 # SustainableMaterialManagement
 
 SQL code for a database that keeps track of materials used in technology products and their recycling.
