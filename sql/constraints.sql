@@ -12,7 +12,7 @@ ALTER TABLE country
     ADD CONSTRAINT chk_country_name
         CHECK (CHAR_LENGTH(TRIM(country_name)) > 0), -- TRIM is used here to trim the possible blank spaces before or after the country_name, giving us the actual character length (The same reasoning was used for the other alterations)
     ADD CONSTRAINT uq_country_name                   
-        UNIQUE (TRIM(country_name)); -- For example, the country names "Netherlands" and "   Netherlands   " will not be false duplicates due to TRIM here
+        UNIQUE ((TRIM(country_name))); -- For example, the country names "Netherlands" and "   Netherlands   " will not be false duplicates due to TRIM here
 
 ALTER TABLE factory
     DROP FOREIGN KEY factory_ibfk_1;
@@ -26,7 +26,7 @@ ALTER TABLE factory
     ADD CONSTRAINT chk_factory_name
         CHECK (CHAR_LENGTH(TRIM(factory_name)) > 0),
     ADD CONSTRAINT uq_factory_name
-        UNIQUE (TRIM(factory_name)),
+        UNIQUE ((TRIM(factory_name))),
     ADD CONSTRAINT fk_factory_country
         FOREIGN KEY (country_id)
         REFERENCES country(country_id);
@@ -43,7 +43,7 @@ ALTER TABLE supplier
     ADD CONSTRAINT chk_supplier_name
         CHECK (CHAR_LENGTH(TRIM(supplier_name)) > 0),
     ADD CONSTRAINT uq_supplier_name
-        UNIQUE (TRIM(supplier_name)),
+        UNIQUE ((TRIM(supplier_name))),
     ADD CONSTRAINT fk_supplier_country
         FOREIGN KEY (country_id)
         REFERENCES country(country_id);
@@ -59,7 +59,7 @@ ALTER TABLE material
     ADD CONSTRAINT chk_material_type
         CHECK (CHAR_LENGTH(TRIM(material_type)) > 0),
     ADD CONSTRAINT uq_material_name
-        UNIQUE (TRIM(material_name));
+        UNIQUE ((TRIM(material_name)));
 
 ALTER TABLE recycling_company
     DROP FOREIGN KEY recycling_company_ibfk_1;
@@ -76,7 +76,7 @@ ALTER TABLE recycling_company
     ADD CONSTRAINT chk_recycling_efficiency
         CHECK (recycling_efficiency_rate BETWEEN 0 AND 100),
     ADD CONSTRAINT uq_recycling_company_name
-        UNIQUE (TRIM(recycling_company_name)),
+        UNIQUE ((TRIM(recycling_company_name))),
     ADD CONSTRAINT fk_recycling_company_country
         FOREIGN KEY (country_id)
         REFERENCES country(country_id);
@@ -92,7 +92,7 @@ ALTER TABLE product_type
     ADD CONSTRAINT chk_product_lifespan
         CHECK (avg_lifespan_years > 0),
     ADD CONSTRAINT uq_product_type_name
-        UNIQUE (TRIM(product_type_name));
+        UNIQUE ((TRIM(product_type_name)));
 
 ALTER TABLE waste_collection_rule
     DROP FOREIGN KEY waste_collection_rule_ibfk_1;
@@ -212,7 +212,7 @@ ALTER TABLE extraction_method
     ADD CONSTRAINT chk_environmental_risk
         CHECK (environmental_risk_rating BETWEEN 1 AND 5),
     ADD CONSTRAINT uq_method_name
-        UNIQUE (TRIM(method_name));
+        UNIQUE ((TRIM(method_name)));
 
 ALTER TABLE extraction
     DROP FOREIGN KEY extraction_ibfk_1,
@@ -271,7 +271,7 @@ ALTER TABLE waste_collection_company
     ADD CONSTRAINT chk_collection_fee
         CHECK (collection_fee >= 0),
     ADD CONSTRAINT uq_collection_company_name
-        UNIQUE (TRIM(waste_collection_company_name)),
+        UNIQUE ((TRIM(waste_collection_company_name))),
     ADD CONSTRAINT fk_collection_company_country
         FOREIGN KEY (country_id)
         REFERENCES country(country_id);
