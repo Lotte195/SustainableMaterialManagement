@@ -45,7 +45,7 @@ This database attempts to keep track of factories, production, material extracti
 1. Clone this repository.
 2. Open MySQL Workbench and connect to your MySQL server.
 3. Open `sql/schema.sql` and execute it to create the database structure.
-4. Open `sql/sample_data.sql` and execute it to insert the example data.
+4. Open `sql/sample_data.sql` and execute it to insert the example data. (This file also contains the CONSTRAINTS)
 5. Select the `SustainableMaterialManagement` database and start querying.
 
 ## Project Structure
