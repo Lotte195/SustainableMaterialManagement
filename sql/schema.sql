@@ -1,16 +1,23 @@
+-- In this file, we create all the tables of our database, and their attributes. 
+-- We've also specified primary and foreign keys in here, and wrote down the datatypes.
+-- We wrote the code based on the lucid chart ERD, but after a few issues, some data types were changed and foreign keys were added.
+
+-- The following line is to delete the database in case the creation goes wrong on the first try and changes need to be made. 
+-- (DON'T RUN THIS AFTER INSERTING OR CHANGING DATA IT WILL BE GONE)
 -- DROP DATABASE IF EXISTS SustainableMaterialManagement;
+
 CREATE DATABASE IF NOT EXISTS SustainableMaterialManagement;
 USE SustainableMaterialManagement;
 
 CREATE TABLE country (
   country_id INT,
-  country_name VARCHAR(50),
+  country_name VARCHAR(56),
   PRIMARY KEY (country_id)
 );
 
 CREATE TABLE factory (
   factory_id INT,
-  factory_name VARCHAR(50),
+  factory_name VARCHAR(150),
   country_id INT,
   PRIMARY KEY (factory_id),
   FOREIGN KEY (country_id)
@@ -20,7 +27,7 @@ CREATE TABLE factory (
 CREATE TABLE supplier (
   supplier_id INT,
   country_id INT,
-  supplier_name VARCHAR(50),
+  supplier_name VARCHAR(150),
   PRIMARY KEY (supplier_id),
   FOREIGN KEY (country_id)
       REFERENCES country(country_id)
@@ -36,7 +43,7 @@ CREATE TABLE material (
 CREATE TABLE recycling_company (
   recycling_company_id INT,
   country_id INT,
-  recycling_company_name VARCHAR(50),
+  recycling_company_name VARCHAR(150),
   recycling_efficiency_rate INT,
   PRIMARY KEY (recycling_company_id),
   FOREIGN KEY (country_id)
@@ -53,7 +60,7 @@ CREATE TABLE product_type (
 CREATE TABLE waste_collection_rule (
   rule_id INT,
   country_id INT,
-  rule_description VARCHAR(50),
+  rule_description VARCHAR(255),
   PRIMARY KEY (rule_id),
   FOREIGN KEY (country_id)
       REFERENCES country(country_id)
@@ -146,7 +153,7 @@ CREATE TABLE product_material (
 CREATE TABLE waste_collection_company (
   company_id INT,
   country_id INT,
-  waste_collection_company_name VARCHAR(50),
+  waste_collection_company_name VARCHAR(150),
   collection_fee INT,
   PRIMARY KEY (company_id),
   FOREIGN KEY (country_id)
