@@ -295,14 +295,14 @@ INSERT INTO supplier (supplier_id, country_id, supplier_name) VALUES
 (1, 1, 'Dutch Metals Supply'),
 (2, 2, 'Bavaria Raw Materials'),
 (3, 3, 'Belgian Glass Partners'),
-(4, 4, 'Nordic Timber Supply'),
+(4, 4, 'Nordic Gold Mine'),
 (5, 5, 'French Silicon Solutions');
 
 INSERT INTO material (material_id, material_name, material_type) VALUES
 (1, 'Aluminium', 'Metal'),
 (2, 'Copper', 'Metal'),
-(3, 'Recycled Glass', 'Glass'),
-(4, 'Recycled Timber', 'Wood'),
+(3, 'Gold', 'Metal'),
+(4, 'Glass', 'Glass'),
 (5, 'Silicon', 'Semiconductor');
 
 INSERT INTO recycling_company
@@ -320,7 +320,7 @@ VALUES
 (1, 'Smartphone', 4),
 (2, 'Laptop', 6),
 (3, 'Washing Machine', 11),
-(4, 'Office Chair', 10),
+(4, 'CPU', 4),
 (5, 'Microchip', 8);
 
 INSERT INTO waste_collection_rule
@@ -339,7 +339,7 @@ VALUES
 (2, 'Refurbished', 2),
 (3, 'Landfilled', 3),
 (4, 'Incinerated', 4),
-(5, 'Exported for Recycling', 5);
+(5, 'Export', 5);
 
 INSERT INTO waste_record
 (waste_record_id, product_type_id, country_id, fate_id,
@@ -376,18 +376,18 @@ VALUES
 (1, 'Open Pit Mining', 5),
 (2, 'Underground Mining', 4),
 (3, 'Glass Recovery', 2),
-(4, 'Salvaged Timber', 1),
+(4, 'Salvaged Gold', 1),
 (5, 'Silicon Wafer Processing', 2);
 
 INSERT INTO extraction
 (extraction_id, supplier_id, material_id, extraction_method_id,
  extraction_quantity)
 VALUES
-(1, 1, 1, 1, 120000),
-(2, 2, 2, 2, 85000),
-(3, 3, 3, 3, 95000),
-(4, 4, 4, 4, 110000),
-(5, 5, 5, 5, 78000);
+(1, 1, 1, 1, 1200),
+(2, 2, 2, 2, 850),
+(3, 3, 3, 3, 950),
+(4, 4, 4, 4, 1100),
+(5, 5, 5, 5, 780);
 
 INSERT INTO product_material
 (product_type_id, material_id, quantity_per_unit)
@@ -403,8 +403,10 @@ VALUES
 -- Washing Machine
 (3, 1, 4200),
 
--- Office Chair
-(4, 4, 9000),
+-- CPU
+(4, 4, 90),
+(4, 1, 120),
+(4, 2, 25),
 
 -- Microchip
 (5, 5, 20),
