@@ -1,6 +1,8 @@
-USE SustainableMaterialManagement;
+-- In this file, we add constraints to the attributes, limiting maximum characters and which numbers can be added to the database
+-- We separate the constraints from the creation of the database, so that they can still be changed later on if needed
+-- Foreign keys cannot be changed or constrained after database creation, which is why they are deleted, constrained and added again here, while there is still no data in them
 
--- 1. Add Constraints
+USE SustainableMaterialManagement;
 
 ALTER TABLE country
     MODIFY country_id INT NOT NULL,
