@@ -34,13 +34,6 @@ This database attempts to keep track of factories, production, material extracti
 
 ## Getting Started
 
-### Requirements
-
-* MySQL Server
-* MySQL Workbench (or another MySQL client)
-* Git
-
-### Installation
 
 1. Clone this repository.
 2. Open MySQL Workbench and connect to your MySQL server.
@@ -64,5 +57,5 @@ SustainableMaterialManagement/
 ### SQL Files
 
 * `sql/schema.sql` — Database structure, including tables, primary keys, and foreign keys.
-* `sql/sample_data.sql` — Example data for the database.
+* `sql/sample_data.sql` — Example data for the database, and the constraints (we put the constraints separate from the schema so that you don't need to recreate the database if you want to change something about the constraints.
 * `sql/queries.sql` — Example queries for analysing the database.
