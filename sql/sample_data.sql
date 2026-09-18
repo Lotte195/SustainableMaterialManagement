@@ -1,5 +1,9 @@
 USE SustainableMaterialManagement;
 
+-- This file exists of 2 steps: inserting the data, and then checking if the data was actually inserted. (We count the rows and check).
+-- We insert 5 rows into every entity except product_material (is has 11). We chose to not use too much data yet to keep it manageable for now.
+-- The data was made up by us. 
+
 -- 1. INSERT SAMPLE DATA
 
 INSERT INTO country (country_id, country_name) VALUES
