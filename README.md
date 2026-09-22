@@ -31,13 +31,15 @@ This database attempts to keep track of factories, production, material extracti
 | `extraction`               | Connects suppliers, materials, and extraction methods      |
 | `product_material`         | Junction table between product types and materials         |
 | `waste_collection_company` | Stores waste collection companies and their countries      |
+| `material_prices`          | Stores material prices per country and process type        |
 
 ## Running order
 
 1. Open `sql/schema.sql` and execute it to create the database structure.
 2. Open `sql/constraints.sql` and execute to implement all constraints.
 3. Open `sql/sample_data.sql` and execute it to insert the example data.
-4. Select the `SustainableMaterialManagement` database and start querying.
+4. Open `sql/other.sql` and execute it to create the material_prices entity and insert its example data.
+5. Select the `SustainableMaterialManagement` database and start querying.
 
 ## Project Structure
 
@@ -50,6 +52,7 @@ SustainableMaterialManagement/
     ├── schema.sql
     ├── constraints.sql
     ├── sample_data.sql
+    ├── other.sql
     └── queries.sql
 ```
 
