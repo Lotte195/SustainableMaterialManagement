@@ -10,7 +10,6 @@ USE SustainableMaterialManagement;
 --   real-world proxy for product_type_id = 1 (Smartphone).
 --   https://ec.europa.eu/eurostat/databrowser/view/env_waseleeos/default/table?lang=en
 --   Last data update: 08/04/2026. License: Eurostat reuse policy
---   (free reuse incl. commercial, with source acknowledgement).
 --
 -- Source B: Eurostat env_ac_mfa — Material flow accounts,
 --   Domestic Material Consumption (NOTE: this is DMC, not strict
