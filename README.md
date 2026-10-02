@@ -65,3 +65,5 @@ SustainableMaterialManagement/
 * `sql/constraints.sql`-  Constraints, we put the constraints separate from the schema so that you don't need to recreate the database if you want to change something about the constraints.
 * `sql/sample_data.sql` — Example data for the database (mock data, made up by us)
 * `sql/queries.sql` — The three advanced queries we needed to write, and their explanations. 
+* `sql/real_data.sql` — Contains real data and some of the sample data for the entities that were not covered by the real data.
+* `sql/other.sql` — Adds material prices for sample data - not necessary to run our queries.
