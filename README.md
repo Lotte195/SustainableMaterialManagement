@@ -37,9 +37,8 @@ This database attempts to keep track of factories, production, material extracti
 
 1. Open `sql/schema.sql` and execute it to create the database structure.
 2. Open `sql/constraints.sql` and execute to implement all constraints.
-3. Open `sql/sample_data.sql` and execute it to insert the example data.
-4. Open `sql/other.sql` and execute it to create the material_prices entity and insert its example data.
-5. Select the `SustainableMaterialManagement` database and start querying.
+3. Open `sql/real_data.sql` and execute to insert the real data (this also contains sample data because the real data did not cover all entities)
+4. Select the `SustainableMaterialManagement` database and start querying.
 
 ## Project Structure
 
@@ -52,11 +51,12 @@ SustainableMaterialManagement/
 ├── Stakeholder Presentation (YouTube Link)
 │
 └── sql/
-    ├── schema.sql
     ├── constraints.sql
-    ├── sample_data.sql
     ├── other.sql
-    └── queries.sql
+    ├── queries.sql
+    ├── real_data.sql
+    ├── sample_data.sql
+    └── schema.sql
 ```
 
 ### Files
