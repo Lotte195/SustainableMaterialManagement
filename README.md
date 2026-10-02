@@ -47,6 +47,9 @@ This database attempts to keep track of factories, production, material extracti
 SustainableMaterialManagement/
 │
 ├── README.md
+├── Relation Schema.mwb 
+├── Societal Problem Definition (Google Docs Link)
+├── Stakeholder Presentation (YouTube Link)
 │
 └── sql/
     ├── schema.sql
