@@ -23,10 +23,7 @@ USE SustainableMaterialManagement;
 --   observation).
 --   https://ec.europa.eu/eurostat/databrowser/view/env_ac_mfa/default/table?lang=en
 --   Last data update: 02/07/2026. Same Eurostat reuse policy.
---
--- Row IDs start at 100/1000 to stay visually distinct from the
--- synthetic rows (1-5) in sample_data.sql.
--- ============================================================
+
 
 -- ------------------------------------------------------------
 -- SCHEMA FIXES REQUIRED BY REAL DATA (run once, before inserts)
