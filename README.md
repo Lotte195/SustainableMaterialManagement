@@ -64,6 +64,12 @@ SustainableMaterialManagement/
 * `sql/schema.sql` — Database structure, including tables, primary keys, and foreign keys. This was based on our chart and schema from the previous weeks.
 * `sql/constraints.sql`-  Constraints, we put the constraints separate from the schema so that you don't need to recreate the database if you want to change something about the constraints.
 * `sql/sample_data.sql` — Example data for the database (mock data, made up by us)
-* `sql/queries.sql` — The three advanced queries we needed to write, and their explanations. 
-* `sql/real_data.sql` — Contains real data and some of the sample data for the entities that were not covered by the real data.
+* `sql/queries.sql` — The three advanced queries we needed to write, and their explanations.
 * `sql/other.sql` — Adds material prices for sample data - not necessary to run our queries.
+* `sql/real_data.sql` — Contains real data and some of the sample data for the entities that were not covered by the real data.
+
+### Real-world data, reference year 2023
+
+Source A: Eurostat env_waseleeos — Waste from Electrical and Electronic Equipment (WEEE) by waste management operations, open scope, 6 product categories. Category used here: Small IT and telecommunications equipment (EE_SITTE), used as the real-world proxy for product_type_id = 1 (Smartphone). https://ec.europa.eu/eurostat/databrowser/view/env_waseleeos/default/table?lang=en Last data update: 08/04/2026. License: Eurostat reuse policy (free reuse incl. commercial, with source acknowledgement).
+
+Source B: Eurostat env_ac_mfa — Material flow accounts, Domestic Material Consumption (NOTE: this is DMC, not strict Domestic Extraction -- DMC = extraction + imports - exports. Used as the closest available proxy for the `material` / `extraction` tables since this was the view exported. Categories used: Biomass, Metal ores (gross ores), Non-metallic minerals, Fossil energy materials/carriers ('Total' column skipped -- it's a derived sum, not a unique observation). https://ec.europa.eu/eurostat/databrowser/view/env_ac_mfa/default/table?lang=en Last data update: 02/07/2026. Same Eurostat reuse policy.
