@@ -30,4 +30,13 @@ FROM waste_record wr -- starts from waste_record and wr becomes the alias
 JOIN product_type pt ON wr.product_type_id = pt.product_type_id -- product_type <-> waste_record
 JOIN country c ON wr.country_id = c.country_id -- country <-> waste_record
 JOIN recovery r ON wr.waste_record_id = r.waste_record_id -- recovery <-> waste_record
-WHERE r.recover_rate_percent >= ALL (SELECT recover_rate_percent FROM recovery); -- keep only the row(s) where the recovery rate is greater than or equal to every other recovery rate in the table               -- 
+WHERE r.recover_rate_percent >= ALL (SELECT recover_rate_percent FROM recovery); -- keep only the row(s) where the recovery rate is greater than or equal to every other recovery rate in the table    
+
+
+
+-- ADD AT LEAST 2 SELECT QUIERIES PER GROUP MEMBER 
+-- Clearly indicate who wrote which query (you can use your GitHub names for this) in the documentation.
+-- Make sure to document your queries:
+-- Add an explanation of which question they answer
+-- Add how answering this question is relevant to your societal problem statement
+
