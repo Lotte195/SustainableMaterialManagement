@@ -40,3 +40,27 @@ WHERE r.recover_rate_percent >= ALL (SELECT recover_rate_percent FROM recovery);
 -- Add an explanation of which question they answer
 -- Add how answering this question is relevant to your societal problem statement
 
+-- Query 4 (by fz-a36)
+-- Question: which countries recover the largest total quantity of material through their recycling companies?
+-- Relevance: the average efficiency per country only shows how good the recycling companies are, not how much material they actually recover.
+-- By looking at the total recovered quantity per country, we see where finite materials are really being brought back into use, and which countries have recycling infrastructure that other countries could learn from.
+SELECT c.country_name, SUM(r.quantity_recovered) AS total_recovered -- selects country name and the total quantity recovered in that country
+FROM recovery r -- start from recovery and r becomes the alias
+JOIN recycling_company rc ON r.recycling_company_id = rc.recycling_company_id -- recovery <-> recycling_company
+JOIN country c ON rc.country_id = c.country_id -- recycling_company <-> country
+GROUP BY c.country_id, c.country_name -- one row per country
+ORDER BY total_recovered DESC; -- countries that recover the most come first
+
+-- Query 5 (by fz-a36)
+-- Question: which countries have a recycling efficiency that is higher than the average of all recycling companies, and how many recycling companies do they have?
+-- Relevance: the first query ranks all countries, but this one shows only the countries that perform better than the global average.
+-- These are the countries whose recycling strategies are worth copying. The company count shows whether a good score
+-- comes from one single company or from a whole recycling sector, which tells us how reliable the result is.
+SELECT c.country_name, COUNT(rc.recycling_company_id) AS number_of_companies, AVG(rc.recycling_efficiency_rate) AS avg_efficiency -- selects country name, number of recycling companies and their average efficiency
+FROM country c -- start from the country table and c becomes the alias
+JOIN recycling_company rc ON c.country_id = rc.country_id -- country <-> recycling_company
+GROUP BY c.country_id, c.country_name -- one row per country
+HAVING AVG(rc.recycling_efficiency_rate) > (SELECT AVG(recycling_efficiency_rate) FROM recycling_company) -- keeps only countries above the overall average (HAVING filters groups, WHERE filters rows)
+ORDER BY avg_efficiency DESC; -- best countries first
+
+
