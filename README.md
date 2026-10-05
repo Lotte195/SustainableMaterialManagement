@@ -4,7 +4,7 @@ SQL code for our database that keeps track of materials used in technology produ
 
 ## ERD
 
-For an overview of the ERD of this database, see the [Lucidchart ERD](https://lucid.app/lucidchart/7d0e5de8-1718-480a-b3a6-82ad701c2c3a/edit?viewport_loc=-2409%2C-3470%2C4249%2C1937%2C0_0&invitationId=inv_c4767de5-4d50-4759-bf8f-d591fd471b6a), or see the same ERD via [PDF File](https://drive.google.com/file/d/156hH6o_Bom8cqUjlO8g0oECzve3xLdB1/view?usp=sharing)
+For an overview of the ERD of this database, see the [Lucidchart ERD](https://lucid.app/lucidchart/7d0e5de8-1718-480a-b3a6-82ad701c2c3a/edit?viewport_loc=-2409%2C-3470%2C4249%2C1937%2C0_0&invitationId=inv_c4767de5-4d50-4759-bf8f-d591fd471b6a), or see the same ERD via [PDF File](https://drive.google.com/file/d/156hH6o_Bom8cqUjlO8g0oECzve3xLdB1/view?usp=sharing). Please, download the file to see it in high resolution.
 
 ## About the Project
 
