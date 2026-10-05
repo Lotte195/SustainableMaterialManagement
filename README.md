@@ -31,7 +31,6 @@ This database attempts to keep track of factories, production, material extracti
 | `extraction`               | Connects suppliers, materials, and extraction methods      |
 | `product_material`         | Junction table between product types and materials         |
 | `waste_collection_company` | Stores waste collection companies and their countries      |
-| `material_prices`          | Stores material prices per country and process type        |
 
 ## Running order
 
@@ -52,7 +51,6 @@ SustainableMaterialManagement/
 │
 └── sql/
     ├── constraints.sql
-    ├── other.sql
     ├── queries.sql
     ├── real_data.sql
     ├── sample_data.sql
@@ -61,11 +59,10 @@ SustainableMaterialManagement/
 
 ### Files
 
-* `sql/schema.sql` — Database structure, including tables, primary keys, and foreign keys. This was based on our chart and schema from the previous weeks.
+* `sql/schema.sql` — Database structure, including tables, primary keys, and foreign keys. This was based on our ERD.
 * `sql/constraints.sql`-  Constraints, we put the constraints separate from the schema so that you don't need to recreate the database if you want to change something about the constraints.
 * `sql/sample_data.sql` — Example data for the database (mock data, made up by us)
-* `sql/queries.sql` — The three advanced queries we needed to write, and their explanations.
-* `sql/other.sql` — Adds material prices for sample data - not necessary to run our queries.
+* `sql/queries.sql` — The three advanced queries we needed to write, and their explanations. Also includes 8 additional SELECT queries, 2 per person contributing to the project.
 * `sql/real_data.sql` — Contains real data and some of the sample data for the entities that were not covered by the real data.
 
 ### Real-world data, reference year 2023
