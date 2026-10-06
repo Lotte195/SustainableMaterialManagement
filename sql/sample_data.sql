@@ -33,7 +33,7 @@ INSERT INTO material (material_id, material_name, material_type) VALUES
 (2, 'Copper', 'Metal'),
 (3, 'Gold', 'Metal'),
 (4, 'Glass', 'Glass'),
-(5, 'silicon', 'Semiconductor'); --dirty
+(5, 'silicon', 'Semiconductor'); -- dirty
 
 INSERT INTO recycling_company
 (recycling_company_id, country_id, recycling_company_name, recycling_efficiency_rate)
@@ -41,7 +41,7 @@ VALUES
 (1, 1, 'GreenCycle Netherlands', 88),
 (2, 2, 'EcoReclaim Germany', 91),
 (3, 3, 'Circular Belgium', 84),
-(4, 4, 'Nordic Recycle', 105), --dirty
+(4, 4, 'Nordic Recycle', 105), -- dirty
 (5, 5, 'Recyclage France', 82);
 
 INSERT INTO product_type
@@ -79,7 +79,7 @@ VALUES
 (2, 2, 2, 2, 88, 3, 4400),
 (3, 3, 3, 3, 76, 8, 7600),
 (4, 4, 4, 4, 93, 2, 9300),
-(5, 5, 5, 5, -71, 10, 3550); --dirty
+(5, 5, 5, 5, -71, 10, 3550); -- dirty
 
 INSERT INTO recovery
 (recovery_id, waste_record_id, recycling_company_id,
@@ -128,7 +128,7 @@ VALUES
 
 -- Laptop
 (2, 1, 850),
-(2, 2, -180), --dirty
+(2, 2, -180), -- dirty
 
 -- Washing Machine
 (3, 1, 4200),
