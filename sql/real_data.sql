@@ -23,6 +23,16 @@ USE SustainableMaterialManagement;
 --   https://ec.europa.eu/eurostat/databrowser/view/env_ac_mfa/default/table?lang=en
 --   Last data update: 02/07/2026. Same Eurostat reuse policy.
 
+-- ----------------------------------
+-- INTEGRATION WORK
+-- ----------------------------------
+-- Eurostat has missing values maked with :. Those cells were left 
+-- out of the INSERT statements rather than inserted as 0.
+
+-- Country names differ from spelling conventions already used in  
+-- the database (e.g. Eurostat's "Czechia" vs. the more common  
+-- "Czech Republic"), so names were normalized/mapped to match 
+-- existing country table entries before inserting.
 
 -- ------------------------------------------------------------
 -- SCHEMA FIXES REQUIRED BY REAL DATA (run once, before inserts)
