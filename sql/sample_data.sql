@@ -11,7 +11,7 @@ INSERT INTO country (country_id, country_name) VALUES
 (2, 'Germany'),
 (3, 'Belgium'),
 (4, 'Sweden'),
-(5, 'Frnace'); --dirty
+(5, 'Frnace'); -- dirty
 
 INSERT INTO factory (factory_id, factory_name, country_id) VALUES
 (1, 'Eindhoven Electronics Plant', 1),
