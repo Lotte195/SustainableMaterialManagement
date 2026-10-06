@@ -63,4 +63,31 @@ GROUP BY c.country_id, c.country_name -- one row per country
 HAVING AVG(rc.recycling_efficiency_rate) > (SELECT AVG(recycling_efficiency_rate) FROM recycling_company) -- keeps only countries above the overall average (HAVING filters groups, WHERE filters rows)
 ORDER BY avg_efficiency DESC; -- best countries first
 
+-- Query 6 (Marthaobi)
+-- Question: within each country, which single recycling company is the top performer, and what is its efficiency rate?
+-- Relevance: the country-level average (Query 1) can hide the fact that one strong company is dragging up a weak sector's
+-- numbers, or that a country's average is already driven by one clear leader. Pinpointing the top company per country
+-- lets us study exactly which company's practices are worth documenting and exporting to other countries.
+SELECT country_name, recycling_company_name, recycling_efficiency_rate
+FROM (
+    SELECT c.country_name,
+           rc.recycling_company_name,
+           rc.recycling_efficiency_rate,
+           RANK() OVER (PARTITION BY c.country_id ORDER BY rc.recycling_efficiency_rate DESC) AS rnk -- ranks companies within each country, resets per country
+    FROM recycling_company rc -- start from recycling_company
+    JOIN country c ON rc.country_id = c.country_id -- recycling_company <-> country
+) ranked
+WHERE rnk = 1 -- keep only the #1 company per country
+ORDER BY recycling_efficiency_rate DESC;
 
+
+-- Query 7 (Marthaobi)
+-- Question: which product types have no waste_record at all?
+-- Relevance: our societal problem is about managing material lifecycles responsibly, but we can only manage what we
+-- actually monitor. This query exposes product categories that are being manufactured (they may still appear in
+-- factory_product) but have a complete monitoring gap in the waste pipeline . Exactly the kind of blind spot that
+-- lets illegal dumping or unreported waste slip through unnoticed.
+SELECT pt.product_type_id, pt.product_type_name -- picks out the product type with no tracked outcome
+FROM product_type pt -- start from product_type
+LEFT JOIN waste_record wr ON pt.product_type_id = wr.product_type_id -- product_type <-> waste_record (keep unmatched rows too)
+WHERE wr.waste_record_id IS NULL; -- no matching waste_record exists at all
