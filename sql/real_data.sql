@@ -179,15 +179,6 @@ VALUES
 (4, 134, 'Producer take-back system'),
 (5, 135, 'Household recycling points');
 
--- Material categories (Eurostat MFA top-level breakdown)
-INSERT INTO material
-(material_id, material_name, material_type)
-VALUES
-(100, 'Biomass', 'MFA category'),
-(101, 'Metal ores (gross ores)', 'MFA category'),
-(102, 'Non-metallic minerals', 'MFA category'),
-(103, 'Fossil energy materials/carriers', 'MFA category');
-
 INSERT INTO factory_product
 (factory_product_id, factory_id, product_type_id)
 VALUES
@@ -206,28 +197,39 @@ VALUES
 (4, 'Salvaged Gold', 1),
 (5, 'Silicon Wafer Processing', 2);
 
--- THIS DATA DOES NOT MATCH!!!
+-- Material categories (Eurostat MFA top-level breakdown)
+INSERT INTO material
+(material_id, material_name, material_type)
+VALUES
+(100, 'Biomass', 'MFA category'),
+(101, 'Metal ores (gross ores)', 'MFA category'),
+(102, 'Non-metallic minerals', 'MFA category'),
+(103, 'Fossil energy materials/carriers', 'MFA category');
+
 INSERT INTO product_material
 (product_type_id, material_id, quantity_per_unit)
 VALUES
 -- Smartphone
-(1, 100, 120),
+(1, 101, 10),
 (1, 102, 25),
 
 -- Laptop
-(2, 100, 850),
+(2, 101, 250),
 (2, 102, 180),
+(2, 103, 20),
 
 -- Washing Machine
-(3, 100, 4200),
+(3, 101, 4200),
+(3, 102, 2300),
+(3, 103, 1120),
 
 -- CPU
-(4, 100, 90),
-(4, 103, 120),
-(4, 101, 25),
+(4, 101, 50),
+(4, 103, 100),
+(4, 102, 25),
 
 -- Microchip
-(5, 100, 20),
+(5, 103, 1),
 (5, 102, 5),
 (5, 101, 2);
 
