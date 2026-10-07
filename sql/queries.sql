@@ -102,6 +102,44 @@ FROM product_type pt -- start from product_type
 LEFT JOIN waste_record wr ON pt.product_type_id = wr.product_type_id -- product_type <-> waste_record (keep unmatched rows too)
 WHERE wr.waste_record_id IS NULL; -- no matching waste_record exists at all
 
+
+-- Query 8 (Lotte195)
+-- Question: Which countries collected the most smartphones?
+-- Relevance: Almost everyone has a smartphone. As we all know, they don't last that long and are frequently disposed of and replaced. This means 
+-- there is a large part of electronic waste. Therefore it is useful to know which countries collect the most smartphones. If we know that, we can check
+-- the regulations this country has on collecting waste. That is helpful for other countries which don't collect as much electronic waste, and therefore
+-- maybe see more pollution.
+
+SELECT c.country_name, wr.quantity_collected
+FROM waste_record wr
+JOIN country c ON wr.country_id = c.country_id
+JOIN product_fate pf ON wr.fate_id = pf.fate_id
+JOIN product_type pt ON wr.product_type_id = pt.product_type_id
+WHERE pf.fate_type = 'Collected'
+  AND pt.product_type_name = 'Smartphone'
+  AND c.country_name <> 'European Union' -- don't consider EU a country
+ORDER BY wr.quantity_collected DESC;
+
+-- Query 9 (Lotte195)
+-- Question: Which waste records have a recovery rate higher than the average recovery rate,
+-- and from which country do they come?
+-- Relevance: it is useful to see which waste records are 'great', meaning they have a higher than average recovery rate. 
+-- That means that we can learn which countries have which specific waste records that are very good. Then we can use the information in these records
+-- to see if we can trace back why they are so good, and if we can implement it elsewhere.
+
+SELECT wr.waste_record_id,
+       c.country_name,
+       r.recover_rate_percent
+FROM waste_record wr
+JOIN recovery r ON wr.waste_record_id = r.waste_record_id
+JOIN country c ON wr.country_id = c.country_id
+WHERE r.recover_rate_percent > (
+    SELECT AVG(recover_rate_percent)
+    FROM recovery
+)
+ORDER BY r.recover_rate_percent DESC;
+
+
 /*
 Query 10 (KV-prog-arch)
 Question: Do countries that pay more for waste collection also recycle better?
