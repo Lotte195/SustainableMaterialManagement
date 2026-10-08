@@ -7,7 +7,7 @@ SQL code for our database that keeps track of materials used in technology produ
 
 Material scarcity in technology production is an economic and environmental problem. High product costs, resource extraction that damages the environment, and waste accumulation are examples of the negative effects associated with high levels of production.
 
-The database tracks the full lifecycle of tech metals in a Sustainable Material Management context: where materials are extracted, which products use them, where products are made, and what happens to them as waste (collection, illegal disposal, recycling). It should be able to answer questions like: Which countries and suppliers extract the most materials with high environmental risk?
+The database tracks the full lifecycle of tech metals in a Sustainable Material Management context: where materials are extracted, which products use them, where products are made, and what happens to them as waste . It should be able to answer questions like: Which countries and suppliers extract the most materials with high environmental risk?
 
 ## ERD
 
