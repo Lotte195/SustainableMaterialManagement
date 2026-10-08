@@ -2,15 +2,47 @@
 
 SQL code for our database that keeps track of materials used in technology products and their recycling.
 
-## ERD
-
-For an overview of the ERD of this database, see the [Lucidchart ERD](https://lucid.app/lucidchart/7d0e5de8-1718-480a-b3a6-82ad701c2c3a/edit?viewport_loc=-2409%2C-3470%2C4249%2C1937%2C0_0&invitationId=inv_c4767de5-4d50-4759-bf8f-d591fd471b6a), or see the same ERD via [PDF File](https://drive.google.com/file/d/156hH6o_Bom8cqUjlO8g0oECzve3xLdB1/view?usp=sharing). Please, download the file to see it in high resolution.
 
 ## About the Project
 
 Material scarcity in technology production is an economic and environmental problem. High product costs, resource extraction that damages the environment, and waste accumulation are examples of the negative effects associated with high levels of production.
 
-This database attempts to keep track of factories, production, material extraction, recycling, waste collection, and related information.
+The database tracks the full lifecycle of tech metals in a Sustainable Material Management context: where materials are extracted, which products use them, where products are made, and what happens to them as waste (collection, illegal disposal, recycling). It should be able to answer questions like: Which countries and suppliers extract the most materials with high environmental risk?
+
+## ERD
+
+For an overview of the ERD of this database, see the [Lucidchart ERD](https://lucid.app/lucidchart/7d0e5de8-1718-480a-b3a6-82ad701c2c3a/edit?viewport_loc=-2409%2C-3470%2C4249%2C1937%2C0_0&invitationId=inv_c4767de5-4d50-4759-bf8f-d591fd471b6a), or see the same ERD via [PDF File](https://drive.google.com/file/d/156hH6o_Bom8cqUjlO8g0oECzve3xLdB1/view?usp=sharing). Please, download the file to see it in high resolution.
+## ERD Description
+
+### Data interactions
+
+- A country hosts factories, suppliers, recycling companies, collection companies, and collection rules.
+- A supplier performs extractions of materials using an extraction method.
+- A factory produces many product types, and a product type is produced by many factories.
+- A product type is composed of many materials, and a material is used in many product types.
+- A product type generates waste records per country, and each waste record is assigned one fate (e.g. recycle, landfill).
+- A fate is determined by collection rule.
+- Recycling companies perform recoveries on waste records whose fate is "recycle".
+
+### Entities
+
+Country, factory, factory_product, supplier, material, extraction_method, extraction, product_type, waste_record, product_fate, product_type, waste_collection_rule, waste_collection_company, recycling_company, recovery.
+
+### Relationships and cardinalities
+
+- **Country → factory / supplier / recycling company / collection company / rule / waste record:** one-to-many (hosts).
+- **Factory ↔ product_type:** many-to-many, resolved by `factory_product`.
+- **Product_type ↔ material:** many-to-many (composed of), resolved by `product_material`.
+- **Supplier ↔ material:** many-to-many (extracted via), resolved by `extraction`, which also links to `extraction_method`.
+- **Product_type → waste_record:** one-to-many (generates).
+- **Product_fate → waste_record:** one-to-many (assigned to).
+- **Waste_collection_rule → product_fate:** one-to-many (determines).
+- **Recycling_company → recover** one-to-many (performs)
+- **Recover → material** one-to-many (recovers).
+  
+### Attributes and keys
+
+Each table has its own PK. Bridge tables use either a composite PK or a surrogate PK.
 
 ## Database Tables
 
