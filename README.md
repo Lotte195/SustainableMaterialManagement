@@ -49,6 +49,10 @@ SustainableMaterialManagement/
 ├── Relation Schema.mwb 
 ├── Societal Problem Definition (Google Docs Link)
 ├── Stakeholder Presentation (YouTube Link)
+├── Query Results
+|   ├── Results query 1.csv
+|   ├── ...
+|   └── Results query 11.csv
 │
 └── sql/
     ├── constraints.sql
@@ -69,6 +73,7 @@ SustainableMaterialManagement/
 * `Societal Problem Definition` — Google Drive link to a news article, explanation, and motivation of the societal problem.
 * `Normalization` — Google Drive link to a file explaining the normalization steps of the database.
 * `Stakeholder Presentation` — YouTube link to a video of a presentation of our database to stakeholders.
+* `Query results` — Folder containing .csv file results for each query.
 
 ### Real-world data, reference year 2023
 
