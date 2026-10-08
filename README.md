@@ -46,7 +46,8 @@ SustainableMaterialManagement/
 │
 ├── Normalization (Google Docs Link)
 ├── README.md
-├── Relation Schema.mwb 
+├── Relation Schema.mwb
+├── Reflection & Future Directions
 ├── Societal Problem Definition (Google Docs Link)
 ├── Stakeholder Presentation (YouTube Link)
 ├── Query Results
@@ -70,6 +71,7 @@ SustainableMaterialManagement/
 * `sql/queries.sql` — The three advanced queries we needed to write, and their explanations. Also includes 8 additional SELECT queries, 2 per person contributing to the project.
 * `sql/real_data.sql` — Contains real data and some of the sample data for the entities that were not covered by the real data.
 * `Relational Schema.mwb` — Relational schema of the database (open in MySQL)
+* `Reflection & Future Directions` — Google Drive link to our reflection and future directions.
 * `Societal Problem Definition` — Google Drive link to a news article, explanation, and motivation of the societal problem.
 * `Normalization` — Google Drive link to a file explaining the normalization steps of the database.
 * `Stakeholder Presentation` — YouTube link to a video of a presentation of our database to stakeholders.
