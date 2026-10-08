@@ -1,12 +1,16 @@
--- One of the queries we used was finding the average recycling efficiency rate per country, ranked from highest to lowest. 
--- And if we know which countries are better at recycling on average we can identify what the better strategies are, since there are multiple ones. 
+/*
+Query 1, original (by fz-a36 & Marthaobi)
+One of the queries we used was finding the average recycling efficiency rate per country, ranked from highest to lowest. 
+And if we know which countries are better at recycling on average we can identify what the better strategies are, since there are multiple ones. 
 SELECT c.country_name, AVG(rc.recycling_efficiency_rate) AS avg_efficiency -- selects country name and calculates the average recycling efficiency 
+*/
 FROM country c -- start from the country table and c becomes the alias 
 JOIN recycling_company rc ON c.country_id = rc.country_id -- country <-> recycling_company 
 GROUP BY c.country_id, c.country_name -- turns these rows in one group 
 ORDER BY avg_efficiency DESC;  -- this gives us the order of average efficiency of each country from highest to lowest 
 
 /*
+Query 2, original (by fz-a36 & Marthaobi)
 The other query that we used was "WHERE NOT EXISTS" to remove suppliers that use an extraction method with the highest environmental risk rating (5).
 This means that the results only include suppliers that do not have an extraction method with a risk rating of 5, so all lower-risk suppliers remain.
 Because MySQL does not have a "minus" operation for this purpose, we use "WHERE NOT EXISTS" to exclude the suppliers with the highest risk rating.
@@ -24,6 +28,7 @@ WHERE NOT EXISTS (        -- keeps this supplier only if subquery below finds NO
 );
 
 /*
+Query 3, original (by fz-a36 & Marthaobi)
 The last query we used, shows us the waste record with the single highest recovery rate percentage across the whole dataset
 And this is important, because the highest recovery rate percentage, tells us which country is the best at recovering finite materials. So we can see what methods they use and try to implement them in countries 
 with for example a very low recovery rate percentage. 
@@ -34,14 +39,6 @@ JOIN product_type pt ON wr.product_type_id = pt.product_type_id -- product_type 
 JOIN country c ON wr.country_id = c.country_id -- country <-> waste_record
 JOIN recovery r ON wr.waste_record_id = r.waste_record_id -- recovery <-> waste_record
 WHERE r.recover_rate_percent >= ALL (SELECT recover_rate_percent FROM recovery); -- keep only the row(s) where the recovery rate is greater than or equal to every other recovery rate in the table    
-
-
-
--- ADD AT LEAST 2 SELECT QUIERIES PER GROUP MEMBER 
--- Clearly indicate who wrote which query (you can use your GitHub names for this) in the documentation.
--- Make sure to document your queries:
--- Add an explanation of which question they answer
--- Add how answering this question is relevant to your societal problem statement
 
 /*
 Query 4 (by fz-a36)
@@ -102,14 +99,14 @@ FROM product_type pt -- start from product_type
 LEFT JOIN waste_record wr ON pt.product_type_id = wr.product_type_id -- product_type <-> waste_record (keep unmatched rows too)
 WHERE wr.waste_record_id IS NULL; -- no matching waste_record exists at all
 
-
--- Query 8 (Lotte195)
--- Question: Which countries collected the most smartphones?
--- Relevance: Almost everyone has a smartphone. As we all know, they don't last that long and are frequently disposed of and replaced. This means 
--- there is a large part of electronic waste. Therefore it is useful to know which countries collect the most smartphones. If we know that, we can check
--- the regulations this country has on collecting waste. That is helpful for other countries which don't collect as much electronic waste, and therefore
--- maybe see more pollution.
-
+/*
+Query 8 (Lotte195)
+Question: Which countries collected the most smartphones?
+Relevance: Almost everyone has a smartphone. As we all know, they don't last that long and are frequently disposed of and replaced. This means 
+there is a large part of electronic waste. Therefore it is useful to know which countries collect the most smartphones. If we know that, we can check
+the regulations this country has on collecting waste. That is helpful for other countries which don't collect as much electronic waste, and therefore
+maybe see more pollution.
+*/
 SELECT c.country_name, wr.quantity_collected
 FROM waste_record wr
 JOIN country c ON wr.country_id = c.country_id
@@ -120,13 +117,14 @@ WHERE pf.fate_type = 'Collected'
   AND c.country_name <> 'European Union' -- don't consider EU a country
 ORDER BY wr.quantity_collected DESC;
 
--- Query 9 (Lotte195)
--- Question: Which waste records have a recovery rate higher than the average recovery rate,
--- and from which country do they come?
--- Relevance: it is useful to see which waste records are 'great', meaning they have a higher than average recovery rate. 
--- That means that we can learn which countries have which specific waste records that are very good. Then we can use the information in these records
--- to see if we can trace back why they are so good, and if we can implement it elsewhere.
-
+/*
+Query 9 (Lotte195)
+Question: Which waste records have a recovery rate higher than the average recovery rate,
+and from which country do they come?
+Relevance: it is useful to see which waste records are 'great', meaning they have a higher than average recovery rate. 
+That means that we can learn which countries have which specific waste records that are very good. Then we can use the information in these records
+to see if we can trace back why they are so good, and if we can implement it elsewhere.
+*/
 SELECT wr.waste_record_id,
        c.country_name,
        r.recover_rate_percent
@@ -138,7 +136,6 @@ WHERE r.recover_rate_percent > (
     FROM recovery
 )
 ORDER BY r.recover_rate_percent DESC;
-
 
 /*
 Query 10 (KV-prog-arch)
